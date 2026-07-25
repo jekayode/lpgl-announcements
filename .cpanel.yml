@@ -1,0 +1,8 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=$HOME/public_html/gl/updates
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -f index.html $DEPLOYPATH/
+    - /bin/cp -Rf images $DEPLOYPATH/
+    - /bin/cp -Rf assets $DEPLOYPATH/
