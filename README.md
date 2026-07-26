@@ -7,36 +7,32 @@ Built as a single static `index.html` (no build step, no backend) with optimized
 
 https://lifepointeng.org/gl/updates/
 
-## Update flow
+## Weekly pack
 
-1. Edit `index.html` (and images if needed)
-2. Commit and push to `main`
-3. Within a few minutes, cPanel cron runs `deploy.sh` and the live site updates
-
-No cPanel login needed after the one-time cron setup below.
-
-## One-time auto-deploy setup (cPanel cron)
-
-1. Deploy the latest commit once (so `deploy.sh` exists on the server):
-   cPanel → Git™ Version Control → Update from Remote → Deploy HEAD Commit
-2. cPanel → **Cron Jobs** → Add New Cron Job
-3. Common Settings: **Every 5 Minutes** (or paste `*/5 * * * *`)
-4. Command:
+1. Paste next Sunday’s announcement list
+2. Archive current page: copy `index.html` → `archive/YYYY-MM-DD.html` (Sunday date)
+3. Update `index.html` cards to match the new list
+4. Generate the read-through script (from the working copy):
 
 ```bash
-/bin/bash /home/lifepoin/repositories/lpgl-announcements/deploy.sh
+cd ../announcements
+python3 build_script.py --date YYYY-MM-DD
 ```
 
-5. Save.
-
-After that: edit → push → wait up to 5 minutes → live.
-
-Deploy log: `/home/lifepoin/logs/lpgl-deploy.log`
+5. Commit + push — cPanel cron deploys the web page within ~5 minutes
+6. Upload `scripts/Announcement-Script-YYYY-MM-DD.docx` to Google Drive / open in Docs to edit or print
 
 ## Structure
 
-- `index.html` — the page (tap any item to expand)
+- `index.html` — this week’s page (tap any item to expand)
+- `archive/` — previous Sundays’ pages
+- `scripts/` — Google Docs–style read-through Word files
 - `images/` — optimized WebP banners
 - `assets/` — logos
-- `deploy.sh` — pulls from GitHub and copies to `public_html/gl/updates`
-- `.cpanel.yml` — used by the manual “Deploy HEAD Commit” button
+- `deploy.sh` — cron auto-deploy (pull + copy to `public_html/gl/updates`)
+
+## Cron (already set)
+
+```bash
+*/5 * * * * /bin/bash /home/lifepoin/repositories/lpgl-announcements/deploy.sh
+```
