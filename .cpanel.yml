@@ -6,3 +6,4 @@ deployment:
     - /bin/cp -f index.html $DEPLOYPATH/
     - /bin/cp -Rf images $DEPLOYPATH/
     - /bin/cp -Rf assets $DEPLOYPATH/
+    - /bin/cp -Rf lifegroups $DEPLOYPATH/

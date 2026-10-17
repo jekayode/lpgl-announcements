@@ -27,6 +27,10 @@ mkdir -p "$(dirname "$LOG")" "$DEPLOY"
 
   cp -f index.html "$DEPLOY/"
   cp -Rf images assets "$DEPLOY/"
+  if [ -d lifegroups ]; then
+    mkdir -p "$DEPLOY/lifegroups"
+    cp -Rf lifegroups/. "$DEPLOY/lifegroups/"
+  fi
   if [ -d archive ]; then
     mkdir -p "$DEPLOY/archive"
     cp -Rf archive/. "$DEPLOY/archive/"

@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LifeGroups — LifePointe Greater Lekki</title>
+  <meta name="description" content="Find your LifeGroup at LifePointe Greater Lekki. Coverage area, venue and meeting time for every group, plus the WhatsApp link to join." />
+  <meta name="theme-color" content="#DD5D20" />
+  <link rel="icon" href="../assets/lifepointe-color.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Amaranth:wght@400;700&family=Pacifico&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-orange: #DD5D20;
+      --color-orange-deep: #C24E16;
+      --color-amber: #F79000;
+      --color-lemon: #B6DF19;
+      --color-brown: #7A3B12;
+      --color-red: #D5341A;
+      --color-purple: #6B3FA0;
+      --color-ink: #241813;
+      --color-cream: #FBF4EA;
+      --color-cream-deep: #EFE3CF;
+      --color-white: #FFFFFF;
+      --border-subtle: #EFE3CF;
+
+      --font-heading: "Amaranth", system-ui, sans-serif;
+      --font-body: "Quicksand", "Trebuchet MS", system-ui, sans-serif;
+      --font-script: "Pacifico", cursive;
+
+      --shadow-soft: 0 12px 30px -18px rgba(60,30,10,.35);
+      --shadow-button: 0 8px 20px -8px rgba(221,93,32,.7);
+    }
+
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    body { margin: 0; background: var(--color-cream); color: var(--color-ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3 { font-family: var(--font-heading); font-weight: 700; margin: 0; line-height: 1.1; }
+    p { margin: 0; }
+    img { max-width: 100%; display: block; }
+
+    .wrap { width: 100%; max-width: 680px; margin: 0 auto; padding: 0 20px; }
+    .ic { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ---- header ---- */
+    .site-header { position: sticky; top: 0; z-index: 20; background: rgba(251,244,234,.85); backdrop-filter: saturate(140%) blur(10px); -webkit-backdrop-filter: saturate(140%) blur(10px); border-bottom: 1px solid var(--border-subtle); }
+    .site-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .page-title { font-family: var(--font-heading); font-weight: 700; font-size: 21px; color: var(--color-ink); display: inline-flex; align-items: center; gap: 9px; }
+    .page-title::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--color-lemon); }
+    .site-header img { height: 30px; width: auto; }
+
+    /* ---- hero ---- */
+    .hero { position: relative; overflow: hidden; padding: 30px 0 22px; }
+    .hero .wrap { position: relative; z-index: 1; }
+    .hero .script { font-family: var(--font-script); color: var(--color-orange); font-size: 30px; line-height: 1.2; }
+    .hero .lead { margin-top: 8px; max-width: 40ch; color: var(--color-ink); }
+    .hero .service { margin-top: 16px; display: inline-flex; align-items: center; gap: 10px; background: var(--color-white); border: 1px solid var(--border-subtle); border-radius: 999px; padding: 8px 16px; font-weight: 600; font-size: 15px; box-shadow: var(--shadow-soft); }
+    .hero .service .ic { stroke: var(--color-orange); }
+    .blob { position: absolute; border-radius: 50%; z-index: 0; pointer-events: none; }
+    .blob-1 { width: 260px; height: 260px; right: -110px; top: -110px; background: rgba(221,93,32,.10); }
+    .blob-2 { width: 120px; height: 120px; right: 30px; top: 70px; border: 12px solid rgba(182,223,25,.30); background: transparent; }
+
+    /* ---- lifegroups ---- */
+    .site-header a.back { text-decoration: none; }
+    .search { display: block; margin-top: 18px; position: relative; max-width: 460px; }
+    .search input { width: 100%; min-height: 48px; border-radius: 999px; border: 1px solid var(--border-subtle); background: var(--color-white); padding: 0 18px 0 46px; font: 500 16px var(--font-body); color: var(--color-ink); box-shadow: var(--shadow-soft); }
+    .search input:focus { outline: 3px solid var(--color-amber); outline-offset: 1px; }
+    .search .ic { position: absolute; left: 17px; top: 16px; stroke: var(--color-orange); }
+    .list { padding: 4px 0 12px; }
+    .list-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 14px; }
+    .list-head h2 { font-size: 15px; font-family: var(--font-body); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--color-brown); }
+    .count { font-size: 14px; color: var(--color-brown); font-weight: 600; }
+    .cards { display: grid; gap: 14px; }
+    .lg { background: var(--color-white); border: 1px solid var(--border-subtle); border-radius: 20px; box-shadow: var(--shadow-soft); padding: 14px 14px 16px; }
+    .lg[hidden] { display: none; }
+    .lg-head { display: flex; align-items: center; gap: 14px; padding-bottom: 14px; margin-bottom: 14px; border-bottom: 1px solid var(--border-subtle); }
+    .badge { flex: none; width: 62px; height: 62px; border-radius: 50%; background: var(--color-orange); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 700; font-size: 24px; }
+    .lg-cov small { display: block; font-size: 11.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--color-brown); }
+    .lg-cov span { display: block; font-family: var(--font-heading); font-weight: 700; font-size: 19px; line-height: 1.15; }
+    .lg-body { display: grid; gap: 13px; }
+    .mrow { display: flex; gap: 12px; align-items: center; }
+    .mico { flex: none; width: 44px; height: 44px; border-radius: 12px; background: var(--color-cream); border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; }
+    .mico .ic { width: 20px; height: 20px; stroke: var(--color-orange); }
+    .mtxt { min-width: 0; }
+    .mtxt b { display: block; font-weight: 700; font-size: 15.5px; color: var(--color-ink); }
+    .mtxt b.tbc { font-style: italic; color: var(--color-orange); }
+    .mtxt i { display: block; font-style: normal; font-size: 14px; color: var(--color-brown); }
+    .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; padding-top: 2px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 44px; padding: 0 20px; border-radius: 999px; font: 600 15px var(--font-body); text-decoration: none; cursor: pointer; transition: background .18s ease, transform .18s ease; }
+    .btn--primary { background: var(--color-orange); color: #fff; box-shadow: var(--shadow-button); }
+    .btn--primary:hover { background: var(--color-orange-deep); transform: translateY(-1px); }
+    .btn:focus-visible { outline: 3px solid var(--color-amber); outline-offset: 2px; }
+    .btn .ic { stroke: currentColor; }
+    .note { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--color-brown); }
+    .note .ic { stroke: var(--color-orange); }
+    .empty { text-align: center; color: var(--color-brown); font-weight: 600; padding: 20px 0; }
+    .back-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 18px; color: var(--color-brown); font-weight: 600; font-size: 15px; text-decoration: none; }
+    .back-link:hover { color: var(--color-orange); text-decoration: underline; }
+    .back-link .ic { transform: rotate(180deg); }
+    /* ---- footer ---- */
+    .site-footer { background: var(--color-ink); color: var(--color-cream); margin-top: 26px; padding: 40px 0 34px; text-align: center; }
+    .site-footer img { height: 30px; width: auto; margin: 0 auto 16px; }
+    .site-footer .script { font-family: var(--font-script); font-size: 26px; color: var(--color-cream); }
+    .site-footer .fine { margin-top: 12px; font-size: 13.5px; color: rgba(251,244,234,.66); line-height: 1.7; }
+
+    @media (min-width: 620px) {
+      .hero { padding: 36px 0 24px; }
+      .hero .script { font-size: 34px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="16.5" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.2 2"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.5s7-6.3 7-11.5a7 7 0 1 0-14 0c0 5.2 7 11.5 7 11.5Z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="6.5" height="6.5" rx="1.5"/><rect x="14" y="3.5" width="6.5" height="6.5" rx="1.5"/><rect x="3.5" y="14" width="6.5" height="6.5" rx="1.5"/><path d="M14 14h3v3M20.5 14v6.5M17 20.5h3.5"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="3"/><path d="M11 18.5h2"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4.5" rx="1"/><path d="M12 8v13M4.5 12.5V20a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1v-7.5"/><path d="M12 8S11 3 8 3a2.5 2.5 0 0 0 0 5ZM12 8s1-5 4-5a2.5 2.5 0 0 1 0 5Z"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M5 3.5h13a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1H6a1.5 1.5 0 0 1-1.5-1.5V5A1.5 1.5 0 0 1 6 3.5"/><path d="M8.5 3.5V20"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.6-5 4.3 1.5 6.4L12 16.9 6 19.8l1.5-6.4-5-4.3 6.6-.6Z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7.5" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.6a4 4 0 0 1 0 7.8"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.4 8.4 0 0 1-3.8-.8L3 21l1.9-5.2A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5Z"/></symbol>
+  </svg>
+
+  <header class="site-header">
+    <div class="wrap">
+      <span class="page-title">LifeGroups</span>
+      <a class="back" href="../"><img src="../assets/lifepointe-color.png" alt="LifePointe Greater Lekki — back to announcements" width="105" height="30" /></a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <div class="wrap">
+      <p class="script">find your lifegroup</p>
+      <p class="lead">Church is better in community. Find the group closest to where you live, then join its WhatsApp or talk to the group leader.</p>
+      <span class="service"><svg class="ic"><use href="#i-cal"/></svg> Next meeting · Sun 18 Oct, 5:00pm</span>
+      <label class="search"><svg class="ic"><use href="#i-pin"/></svg><input id="q" type="search" placeholder="Search your area, e.g. Ajah, Eputu, GRA" aria-label="Search LifeGroups by area" autocomplete="off" /></label>
+    </div>
+  </section>
+
+  <main class="list">
+    <div class="wrap">
+      <div class="list-head">
+        <h2>All LifeGroups</h2>
+        <span class="count" id="count">8 groups</span>
+      </div>
+
+      <div class="cards" id="cards">
+        <article class="lg" data-search="a1 ajah   badore   general paint royal palms court, addo road, ajah ">
+          <div class="lg-head">
+            <span class="badge">A1</span>
+            <span class="lg-cov"><small>Coverage</small><span>Ajah – Badore – General Paint</span></span>
+          </div>
+          <div class="lg-body">
+            <div class="mrow"><span class="mico"><svg class="ic"><use href="#i-pin"/></svg></span><span class="mtxt"><b>Royal Palms Court, Addo Road, Ajah</b></span></div>
+            <div class="mrow"><span class="mico"><svg class="ic"><use href="#i-clock"/></svg></span><span class="mtxt"><b>5:00pm</b><i>Sunday, 18 October 2026</i></span></div>
+            <div class="cta"><a class="btn btn--primary" href="https://chat.whatsapp.com/JJRfZgYYg6rFQZVF22mIMr" target="_blank" rel="noopener">Join A1 on WhatsApp <svg class="ic"><use href="#i-arrow"/></svg></a></div>
+          </div>
+        </article>
+        <article class="lg" data-search="a2 general paint   dkk mayflower 17, citadel view estate, by dkk, sangotedo ">
+          <div class="lg-head">
+            <span class="badge">A2</span>
+            <span class="lg-cov"><small>Coverage</small><span>General Paint – DKK</span></span>
+          </div>
+          <div class="lg-body">
+            <div class="mrow"><span class="mico"><svg class="ic"><use href="#i-pin"/></svg></span><span class="mtxt"><b>Mayflower 17, Citadel View Estate, by DKK, Sangotedo</b></span></div>
+            <div class="mrow"><span class="mico"><svg class="ic"><use href="#i-clock"/></svg></span><span class="mtxt"><b>5:00pm</b><i>Sunday, 18 October 2026</i></span></div>
+            <div class="cta"><a class="btn btn--primary" href="https://chat.whatsapp.com/I9Dv9ILaCxcFwCiDLZEGcQ" target="_blank" rel="noopener">Join A2 on WhatsApp <svg class="ic"><use href="#i-arrow"/></svg></a></div>
+          </div>
+        </article>
+        <article class="lg" data-search="b dkk   united estate goodnews estate, inside thera annex ">
+          <div class="lg-head">
+            <span class="badge">B</span>
+            <span class="lg-cov"><small>Coverage</small><span>DKK – United Estate</span></span>
+          </div>
+          <div class="lg-body">
+            <div class="mrow"><span class="mico"><svg class="ic"><use href="#i-pin"/></svg></span><span class="mtxt"><b>Goodnews Estate, inside Thera Annex</b></span></div>
+            <div class="mrow"><span class="mico"><svg class="ic"><use href="#i-clock"/></svg></span><span class="mtxt"><b>5:00pm</b><i>Sunday, 18 October 2026</i></span></div>
+            <div class="cta"><a class="btn btn--primary" href="https://chat.whatsapp.com/GYbOKfFIhVx2BOgAHcErEt" target="_blank" rel="noopener">Join B on WhatsApp <svg class="ic"><use href="#i-arrow"/></svg></a></div>
+          </div>
+        </article>
+        <article class="lg" data-search="c1 monastery road   peace garden open court opposite panarottis ">
+          <div class="lg-head">
+            <span class="badge">C1</span>
+            <span class="lg-cov"><small>Coverage</small><span>Monastery Road – Peace Garden</span></span>
+          </div>
+          <div class="lg-body">
+            <div class="mrow"><span class="mico"><svg class="ic"><use href="#i-pin"/></svg></span><span class="mtxt"><b>Open court opposite Panarottis</b></span></div>
+            <div class="mrow"><span class="mico"><svg class="ic"><use href="#i-clock"/></svg></span><span class="mtxt"><b>Immediately after service</b><i>Sunday, 18 October 2026</i></span></div>
+            <div class="cta"><a class="btn btn--primary" href="https://chat.whatsapp.com/E32BK3PXvbVHfSK1Y94V9J" target="_blank" rel="noopener">Join C1 on WhatsApp <svg class="ic"><use href="#i-arrow"/></svg></a></div>
+          </div>
+        </article>
+        <article class="lg" data-search="c2 crown estate   majek area  ">
+          <div class="lg-head">
+            <span class="badge">C2</span>
+            <span class="lg-cov"><small>Coverage</small><span>Crown Estate – Majek area</span></span>
+          </div>
+          <div class="lg-body">
+            <div class="mrow"><span class="mico"><svg class="ic"><use href="#i-pin"/></svg></span><span class="mtxt"><b class="tbc">Venue to be confirmed</b><i>Ask your group leader for directions</i></span></div>
+            <div class="mrow"><span class="mico"><svg class="ic"><use href="#i-clock"/></svg></span><span class="mtxt"><b>5:00pm</b><i>Sunday, 18 October 2026</i></span></div>
+            <div class="cta"><span class="note"><svg class="ic"><use href="#i-chat"/></svg> WhatsApp link coming soon. Ask your group leader</span></div>
+          </div>
+        </article>
+        <article class="lg" data-search="c3 kingdom hall   gra  ">
+          <div class="lg-head">
+            <span class="badge">C3</span>
+            <span class="lg-cov"><small>Coverage</small><span>Kingdom Hall – GRA</span></span>
+          </div>
+          <div class="lg-body">
+            <div class="mrow"><span class="mico"><svg class="ic"><use href="#i-pin"/></svg></span><span class="mtxt"><b class="tbc">Venue to be confirmed</b><i>Ask your group leader for directions</i></span></div>
+            <div class="mrow"><span class="mico"><svg class="ic"><use href="#i-clock"/></svg></span><span class="mtxt"><b>5:00pm</b><i>Sunday, 18 October 2026</i></span></div>
+            <div class="cta"><a class="btn btn--primary" href="https://chat.whatsapp.com/K3o2p6Xkk5R6YXAnZ5AZQr" target="_blank" rel="noopener">Join C3 on WhatsApp <svg class="ic"><use href="#i-arrow"/></svg></a></div>
+          </div>
+        </article>
+        <article class="lg" data-search="d1 uba   ogunfayo musilimu eletu close, behind sapphire grill, ologunfe ">
+          <div class="lg-head">
+            <span class="badge">D1</span>
+            <span class="lg-cov"><small>Coverage</small><span>UBA – Ogunfayo</span></span>
+          </div>
+          <div class="lg-body">
+            <div class="mrow"><span class="mico"><svg class="ic"><use href="#i-pin"/></svg></span><span class="mtxt"><b>Musilimu Eletu Close, behind Sapphire Grill, Ologunfe</b></span></div>
+            <div class="mrow"><span class="mico"><svg class="ic"><use href="#i-clock"/></svg></span><span class="mtxt"><b>5:00pm</b><i>Sunday, 18 October 2026</i></span></div>
+            <div class="cta"><a class="btn btn--primary" href="https://chat.whatsapp.com/IUukPv5JY4VK6ikZ9LJu4V" target="_blank" rel="noopener">Join D1 on WhatsApp <svg class="ic"><use href="#i-arrow"/></svg></a></div>
+          </div>
+        </article>
+        <article class="lg" data-search="d2 eputu and beyond no 5, alhaji tolani bakare street, eputu closest bus stop: eputu">
+          <div class="lg-head">
+            <span class="badge">D2</span>
+            <span class="lg-cov"><small>Coverage</small><span>Eputu and beyond</span></span>
+          </div>
+          <div class="lg-body">
+            <div class="mrow"><span class="mico"><svg class="ic"><use href="#i-pin"/></svg></span><span class="mtxt"><b>No 5, Alhaji Tolani Bakare Street, Eputu</b><i>Closest bus stop: Eputu</i></span></div>
+            <div class="mrow"><span class="mico"><svg class="ic"><use href="#i-clock"/></svg></span><span class="mtxt"><b>5:00pm</b><i>Sunday, 18 October 2026</i></span></div>
+            <div class="cta"><a class="btn btn--primary" href="https://chat.whatsapp.com/KXfMqB182sR0qCfVAk8Cc1" target="_blank" rel="noopener">Join D2 on WhatsApp <svg class="ic"><use href="#i-arrow"/></svg></a></div>
+          </div>
+        </article>
+      </div>
+      <p class="empty" id="empty" hidden>No group matches that area yet. Pick the closest one above, or ask at the welcome desk.</p>
+
+      <a class="back-link" href="../"><svg class="ic"><use href="#i-arrow"/></svg> Back to announcements</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <img src="../assets/lifepointe-white.png" alt="LifePointe Greater Lekki" width="105" height="30" />
+      <p class="script">There's room for you here.</p>
+      <p class="fine">LifePointe Greater Lekki · Screen 4, Nova Cinema, Novare Mall, Sangotedo<br />For the weary, a resting place. For the lost, a signpost home.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var q = document.getElementById('q'), cards = document.querySelectorAll('.lg'),
+          count = document.getElementById('count'), empty = document.getElementById('empty');
+      q.addEventListener('input', function () {
+        var terms = q.value.toLowerCase().trim().split(/\s+/).filter(Boolean), shown = 0;
+        cards.forEach(function (c) {
+          var hay = c.getAttribute('data-search');
+          var ok = terms.every(function (t) { return hay.indexOf(t) !== -1; });
+          c.hidden = !ok; if (ok) shown++;
+        });
+        count.textContent = shown + (shown === 1 ? ' group' : ' groups');
+        empty.hidden = shown !== 0;
+      });
+    })();
+  </script>
+</body>
+</html>
